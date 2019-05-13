@@ -60,13 +60,24 @@ let curUser ;
 function createF() {
   var userUrl = curUser.substring(0,curUser.length - 15);
   console.log("createf"+ userUrl);
-  var url = userUrl +'chobo';
+  var url = userUrl +'chobo/images';
   fileClient.createFolder(url).then(success => {
   console.log(`Created folder ${url}.`);
 }, err => console.log(err) );}
-//폴더 업로드 조정중
-function uploadF(){
-  fileClient.uploadFile('C:\Users\tabri\Pictures\ezra-miller-met-gala-2019-4.jpg','https://yongjun.inrupt.net/chobo/').then(success => {
-  console.log(`Uploaded ${localPath} to ${url}.`);
-}, err => console.log(err) );
+
+//사진 업로드하기
+function upload() {
+  SolidFileClient.popupLogin().then( ()=>{
+      const folder = document.getElementById('targetFolder').value;
+      const fileInput = document.getElementById('fileArea');
+      const files = fileInput.files;
+      for(var i=0;i<files.length;i++){
+          var URI = folder + files[i].name;
+          var content = files[i];
+          SolidFileClient.updateFile(URI, content).then( res=> {
+              console.log(res);
+          }, err=>{console.log("upload error : "+err)});
+      }
+  }, err=>{console.log("login error : "+err)});
 }
+//https://yongjun.inrupt.net/chobo/images
