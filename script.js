@@ -2,20 +2,20 @@ const fileClient = SolidFileClient;
 
 //로그인아웃 버튼 보이기 숨기기
 var showLogin = function () {
-  document.getElementById("login").style.display = "none";
-  document.getElementById("logout").style.display = "block";
-}()
-var showLogout = function () {
   document.getElementById("login").style.display = "block";
   document.getElementById("logout").style.display = "none";
-}()
+};
+var showLogout = function () {
+  document.getElementById("login").style.display = "none";
+  document.getElementById("logout").style.display = "block";
+};
 //처음에 로그인아웃 보일지 말지 설정하기
-addEventListener('DOMContentLoaded', function () { showLogin })
+addEventListener('DOMContentLoaded', function () { showLogin() })
 window.onload = function () {
   fileClient.checkSession().then(session => {
     console.log("Logged in as " + session.webId);
     curUser =session.webId;
-    showLogout;
+    showLogout();
   }, err => console.log(err)
   )
 }
@@ -24,7 +24,7 @@ var login = document.getElementById('login');
 login.addEventListener('click', function () {
   fileClient.popupLogin().then(webId => {
     console.log(`Logged in as ${webId}.`);
-    showLogout;
+    showLogout();
   }, err => console.log(err));
 });
 
@@ -32,7 +32,7 @@ login.addEventListener('click', function () {
 function logout (){addEventListener('click', function () {
   fileClient.logout().then(function () {
     console.log(`Bye now!`);
-    showLogin;
+    showLogin();
   }
   );
 });}
