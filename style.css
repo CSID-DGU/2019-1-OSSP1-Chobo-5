@@ -52,6 +52,11 @@ nav li.active{
 .loginout{
     flex:1;
 }
+
+input[type="file"] {
+  background-color:#c0c0c0 !important;
+}
+
 footer {
     background-color: #2f5167;
     color: #fff;
@@ -59,7 +64,3 @@ footer {
     padding: 40px;
   }
   
-  iframe{
-    width:10000;
-    height:10000;
-  }

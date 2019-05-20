@@ -74,10 +74,11 @@ let curUser ;
 function createF() {
   var userUrl = curUser.substring(0,curUser.length - 15);
   console.log("createf"+ userUrl);
-  var url = userUrl +'chobo';
+  var url = userUrl +'chobo/images';
   fileClient.createFolder(url).then(success => {
   console.log(`Created folder ${url}.`);
 }, err => console.log(err) );}
+
 //사진 업로드하기
 function upload() {
   SolidFileClient.popupLogin().then( ()=>{
