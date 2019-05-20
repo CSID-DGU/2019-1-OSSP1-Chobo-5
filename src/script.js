@@ -94,4 +94,3 @@ function upload() {
       }
   }, err=>{console.log("login error : "+err)});
 }
-//https://yongjun.inrupt.net/chobo/images
