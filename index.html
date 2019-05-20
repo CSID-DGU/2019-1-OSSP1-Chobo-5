@@ -20,7 +20,7 @@
             </ul>
         </nav>
         <div class="loginbar">
-            <div id="loginas"> asdf</div>
+            <div id="loginas"> Log or sign up here</div>
             <div id="loginout">
                 <button id="login">login</button>
                 <button id="logout" onclick="logout()">logout</button>
@@ -36,6 +36,9 @@
         </div>
         <div id="write" class="tabcontent">
             <h1>write</h1>
+            <input id="targetFolder" placeholder="folder to hold uploads"><br>
+           <input type="file" id="fileArea" multiple>
+<input type="button" value="upload" onclick="javascript:upload()">
         </div>
         <div id="profile" class="tabcontent">
             <h1>profile</h1>

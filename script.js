@@ -1,21 +1,32 @@
 const fileClient = SolidFileClient;
 
 //로그인아웃 버튼 보이기 숨기기
-var showLogin = function () {
+var showLogout = function () {
   document.getElementById("login").style.display = "none";
   document.getElementById("logout").style.display = "block";
-}()
-var showLogout = function () {
+};
+var showLogin = function () {
   document.getElementById("login").style.display = "block";
   document.getElementById("logout").style.display = "none";
-}()
+};
+
+
 //처음에 로그인아웃 보일지 말지 설정하기
+showLogin();
 addEventListener('DOMContentLoaded', function () { showLogin })
 window.onload = function () {
   fileClient.checkSession().then(session => {
     console.log("Logged in as " + session.webId);
+    document.getElementById("loginas").innerHTML=session.webId;
     curUser =session.webId;
-    showLogout;
+    const user = solid.data[curUser].user;
+    var ifm = document.createElement('iframe');
+    ifm.src = curUser;
+    ifm.width = 1000;
+    ifm.height = 1000;
+    document.getElementById("profile").appendChild(ifm);
+    console.log(`Welcome, ${user.firstName}!`);
+    showLogout();
   }, err => console.log(err)
   )
 }
@@ -24,7 +35,9 @@ var login = document.getElementById('login');
 login.addEventListener('click', function () {
   fileClient.popupLogin().then(webId => {
     console.log(`Logged in as ${webId}.`);
-    showLogout;
+    document.getElementById("loginas").innerHTML=session.webId;
+    curUser =session.webId;
+    showLogout();
   }, err => console.log(err));
 });
 
@@ -32,7 +45,8 @@ login.addEventListener('click', function () {
 function logout (){addEventListener('click', function () {
   fileClient.logout().then(function () {
     console.log(`Bye now!`);
-    showLogin;
+    document.getElementById("loginas").innerHTML="Log or sign up here";
+    showLogin();
   }
   );
 });}
@@ -64,9 +78,19 @@ function createF() {
   fileClient.createFolder(url).then(success => {
   console.log(`Created folder ${url}.`);
 }, err => console.log(err) );}
-//폴더 업로드 조정중
-function uploadF(){
-  fileClient.uploadFile('C:\Users\tabri\Pictures\ezra-miller-met-gala-2019-4.jpg','https://yongjun.inrupt.net/chobo/').then(success => {
-  console.log(`Uploaded ${localPath} to ${url}.`);
-}, err => console.log(err) );
+//사진 업로드하기
+function upload() {
+  SolidFileClient.popupLogin().then( ()=>{
+      const folder = document.getElementById('targetFolder').value;
+      const fileInput = document.getElementById('fileArea');
+      const files = fileInput.files;
+      for(var i=0;i<files.length;i++){
+          var URI = folder + files[i].name;
+          var content = files[i];
+          SolidFileClient.updateFile(URI, content).then( res=> {
+              console.log(res);
+          }, err=>{console.log("upload error : "+err)});
+      }
+  }, err=>{console.log("login error : "+err)});
 }
+//https://yongjun.inrupt.net/chobo/images
