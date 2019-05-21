@@ -35,8 +35,8 @@ var login = document.getElementById('login');
 login.addEventListener('click', function () {
   fileClient.popupLogin().then(webId => {
     console.log(`Logged in as ${webId}.`);
-    document.getElementById("loginas").innerHTML=session.webId;
-    curUser =session.webId;
+    document.getElementById("loginas").innerHTML=webId;
+    curUser =webId;
     showLogout();
   }, err => console.log(err));
 });
