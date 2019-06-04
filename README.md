@@ -1,7 +1,5 @@
 # Chobo
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0a969ffe-0a42-4f50-b58f-4637a95ab4d5/deploy-status)](https://app.netlify.com/sites/Chobo/deploys)
-
 Chobo is a Web application built to support the Solid.
 Its purpose is to manage, upload, comment, and like images via the Solid POD storage.
 
