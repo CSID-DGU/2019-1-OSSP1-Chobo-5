@@ -72,6 +72,8 @@ class SolidBackend {
    * @param {$rdf.NamedNode} document A given document to fetch and load.
    */
   async load(document: $rdf.NamedNode) {
+    console.log("load");
+    console.log(document);
     try {
       return await this.fetcher.load(document);
     } catch (err) {
@@ -110,14 +112,32 @@ class SolidBackend {
    * @return {Promise<string>} The user's application folder.
    */
   async getAppFolder(webId: string): Promise<string> {
-    const user = $rdf.sym(webId);
+    console.log("getfolder");
+    const card = "profile/card#me"
+    let fixId;
+    console.log(webId);
+    if (webId.indexOf(card)===-1){
+      console.log("fixed");
+      fixId = webId.concat(card);
+    }
+    else{
+      fixId = webId;
+    }
+    console.log(fixId);
+    const user= $rdf.sym(fixId);
     const doc = user.doc();
+    console.log(doc);
+    console.log("getAppfolder try");
     try {
       await this.load(doc);
     } catch (err) {
+      console.log("getAppfolder try err");
       return Promise.reject(err);
     }
+    console.log("getAppfolder try finished");
     const folder = this.store.any(user, SOLID("timeline"), null, doc);
+    console.log(folder);
+    console.log("getfolder end");
     return folder ? folder.value.toString() : Promise.reject(new Error("No application folder."));
   }
 
@@ -233,14 +253,19 @@ class SolidBackend {
    */
   async getImages(webId: string, appFolder: string): Promise<Image[]> {
     let folder;
+    console.log("getting images of...");
+    console.log(webId);
+    console.log(appFolder);
     try {
       folder = appFolder ? appFolder : await this.getValidAppFolder(webId);
     } catch (err) {
       console.log(err);
       return [];
-    }
+    } 
     if (!folder) return [];
     const images = [];
+    console.log("objimg must be absolute?");
+    console.log(folder);
     const imageFolder = $rdf.sym(folder + "images/");
     try {
       await this.load(imageFolder);
@@ -370,7 +395,20 @@ class SolidBackend {
    */
   async getPerson(webId: string): Promise<Person> {
     const user = $rdf.sym(webId);
-    const profile = user.doc();
+    console.log("getPerson");
+    console.log(user);
+        const card = "profile/card#me"
+    let fixUser;
+    console.log(webId);
+    if (webId.indexOf(card)===-1){
+      console.log("fixed");
+      fixUser = $rdf.sym(webId + card);
+    }
+    else{
+      fixUser = user;
+    }
+    console.log(fixUser);
+    const profile = fixUser.doc();
     try {
       await this.load(profile);
     } catch (err) {
@@ -390,6 +428,7 @@ class SolidBackend {
    * @return {Promise<Person[]>} Fetched persons.
    */
   async getPersons(userIds: string[]): Promise<Person[]> {
+    console.log(userIds);
     const users = [];
     for (var i in userIds) {
       await this.getPerson(userIds[i]).then(person => {
@@ -416,7 +455,10 @@ class SolidBackend {
    */
   async getFriendsImages(webId: string): Promise<string[]> {
     const friendsIds = await this.getFriendsWebId(webId);
-    const images = await Promise.all( friendsIds.map(friendId => this.getImages(friendId)) );
+    console.log("get friends images");
+    console.log(friendsIds);
+    const images = await Promise.all( friendsIds.map(friendId => this.getImages(friendId,this.getAppFolder(friendId).value)) );
+    // friendsIds.map(friendId => this.getImages(friendId,friendFolder)) 
     return images.flat().sort((a, b) => Utils.sortByDateAsc(a.createdAt, b.createdAt));
   }
 

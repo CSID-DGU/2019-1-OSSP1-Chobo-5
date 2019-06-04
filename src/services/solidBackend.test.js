@@ -52,8 +52,8 @@ describe.only("SolidBackend creating", () => {
   });
 
   test("creates an activity record statement", () => {
-    const likeUrl = "http://bob.example.org/pixolid/likes/12345.ttl";
-    const imageUrl = "http://tom.example.org/pixolid/images/56789.ttl";
+    const likeUrl = "http://bob.example.org/Chobo/likes/12345.ttl";
+    const imageUrl = "http://tom.example.org/Chobo/images/56789.ttl";
     const likeType = LIKE;
 
     const recordStatement = SolidBackend.createActivityRecordStatement(likeUrl, imageUrl, likeType);
@@ -68,10 +68,10 @@ describe.only("SolidBackend creating", () => {
 
   test("creates a comment statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const commentUrl = "http://bob.example.org/pixolid/comments/12345.ttl";
+    const commentUrl = "http://bob.example.org/Chobo/comments/12345.ttl";
     const commentContent = "What an amazing picture!";
     const published = new Date(2019, 1, 5, 15, 35, 30);
-    const imageUrl = "http://tom.example.org/pixolid/images/56789.ttl";
+    const imageUrl = "http://tom.example.org/Chobo/images/56789.ttl";
 
     const commentStatement = SolidBackend.createCommentStatement(commentUrl, commentContent, imageUrl, userId, published);
 
@@ -86,9 +86,9 @@ describe.only("SolidBackend creating", () => {
 
   test("creates a like statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const likeUrl = "http://bob.example.org/pixolid/likes/12345.ttl";
+    const likeUrl = "http://bob.example.org/Chobo/likes/12345.ttl";
     const published = new Date(2019, 1, 5, 15, 35, 30);
-    const imageUrl = "http://tom.example.org/pixolid/images/56789.ttl";
+    const imageUrl = "http://tom.example.org/Chobo/images/56789.ttl";
 
     const likeStatement = SolidBackend.createLikeStatement(likeUrl, imageUrl, userId, published);
 
@@ -103,8 +103,8 @@ describe.only("SolidBackend creating", () => {
 
   test("creates an image statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const imageFileUrl = "http://bob.example.org/pixolid/images/12345.ttl";
-    const imageUrl = "http://bob.example.org/pixolid/images/12345.jpeg";
+    const imageFileUrl = "http://bob.example.org/Chobo/images/12345.ttl";
+    const imageUrl = "http://bob.example.org/Chobo/images/12345.jpeg";
     const description = "Check out the stunning view.";
     const published = new Date(2019, 1, 5, 15, 35, 30);
 
@@ -121,7 +121,7 @@ describe.only("SolidBackend creating", () => {
 
   test("creates a public file access list statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const imageFileUrl = "http://bob.example.org/pixolid/images/12345.ttl";
+    const imageFileUrl = "http://bob.example.org/Chobo/images/12345.ttl";
     const isPublic = true;
 
     const aclStatement = SolidBackend.createFileAccessList(userId, imageFileUrl, [READ, APPEND], isPublic, []);
@@ -145,7 +145,7 @@ describe.only("SolidBackend creating", () => {
 
   test("creates a private file access list statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const imageFileUrl = "http://bob.example.org/pixolid/images/12345.ttl";
+    const imageFileUrl = "http://bob.example.org/Chobo/images/12345.ttl";
     const isPublic = false;
     const allowedUsers = ["http://tom.example.org/profile/card#me"];
 
@@ -170,7 +170,7 @@ describe.only("SolidBackend creating", () => {
 
   test("creates a public folder access list statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const folderUrl = "http://bob.example.org/pixolid/";
+    const folderUrl = "http://bob.example.org/Chobo/";
     const isPublic = true;
 
     const aclStatement = SolidBackend.createFolderAccessList(userId, folderUrl, [READ, APPEND], isPublic, []);
@@ -196,7 +196,7 @@ describe.only("SolidBackend creating", () => {
 
   test("creates a private folder access list statement", () => {
     const userId = "http://bob.example.org/profile/card#me";
-    const folderUrl = "http://bob.example.org/pixolid/images/12345.ttl";
+    const folderUrl = "http://bob.example.org/Chobo/images/12345.ttl";
     const isPublic = false;
     const allowedUsers = ["http://tom.example.org/profile/card#me"];
 
@@ -240,7 +240,7 @@ describe.only("SolidBackend getting", () => {
 
     const folder = await SolidBackend.getAppFolder(userId);
     expect(load.mock.calls.length).toBe(1);
-    expect(folder).toEqual("http://bob.example.org/public/pixolid/");
+    expect(folder).toEqual("http://bob.example.org/public/Chobo/");
     load.mockClear();
   });
 
@@ -262,7 +262,7 @@ describe.only("SolidBackend getting", () => {
 
   test("checks a valid application folder", async () => {
     const appFolderDoc = loadFile("validAppFolder.ttl");
-    const appFolderUrl = "http://bob.example.org/public/pixolid/";
+    const appFolderUrl = "http://bob.example.org/public/Chobo/";
 
     const load = jest.spyOn(SolidBackend, "load");
     load.mockImplementation((doc: $rdf.NamedNode) => parse(appFolderDoc, appFolderUrl));
@@ -279,7 +279,7 @@ describe.only("SolidBackend getting", () => {
 
   test("gets a valid application folder", async () => {
     const appFolderDoc = loadFile("validAppFolder.ttl");
-    const appFolderUrl = "http://bob.example.org/public/pixolid/";
+    const appFolderUrl = "http://bob.example.org/public/Chobo/";
     const profileDoc = loadFile("bobProfile.ttl");
     const profileUrl = "http://bob.example.org/profile/card";
     const userId = profileUrl + "#me";
@@ -303,7 +303,7 @@ describe.only("SolidBackend getting", () => {
 
   test("gets a no valid application folder exception", async () => {
     const appFolderDoc = loadFile("invalidAppFolder.ttl");
-    const appFolderUrl = "http://bob.example.org/public/pixolid/";
+    const appFolderUrl = "http://bob.example.org/public/Chobo/";
     const profileDoc = loadFile("bobProfile.ttl");
     const profileUrl = "http://bob.example.org/profile/card";
     const userId = profileUrl + "#me";
@@ -330,7 +330,7 @@ describe.only("SolidBackend getting", () => {
   });
 
   test("gets a application folder fetch exception", async () => {
-    const appFolderUrl = "http://bob.example.org/public/pixolid/";
+    const appFolderUrl = "http://bob.example.org/public/Chobo/";
     const profileDoc = loadFile("bobProfile.ttl");
     const profileUrl = "http://bob.example.org/profile/card";
     const userId = profileUrl + "#me";
@@ -383,7 +383,7 @@ describe.only("SolidBackend getting", () => {
   });
 
   test("does not update the application folder", async () => {
-    const oldAppFolderUrl = "http://bob.example.org/public/pixolid/"
+    const oldAppFolderUrl = "http://bob.example.org/public/Chobo/"
     const newAppFolderUrl = "http://bob.example.org/new/folder/";
     const profileDoc = loadFile("bobProfile.ttl");
     const profileUrl = "http://bob.example.org/profile/card";
@@ -484,11 +484,11 @@ describe.only("SolidBackend getting", () => {
     const aliceUserId = aliceProfileUrl + "#me";
 
     const tomImageDoc = loadFile("tomImage.ttl");
-    const tomImageUrl = "http://tom.example.org/public/pixolid/images/12345.jpeg";
-    const tomImageFileUrl = "http://tom.example.org/public/pixolid/images/12345.ttl";
+    const tomImageUrl = "http://tom.example.org/public/Chobo/images/12345.jpeg";
+    const tomImageFileUrl = "http://tom.example.org/public/Chobo/images/12345.ttl";
     const aliceImageDoc = loadFile("aliceImage.ttl");
-    const aliceImageUrl = "http://alice.example.org/public/pixolid/images/12345.jpeg";
-    const aliceImageFileUrl = "http://alice.example.org/public/pixolid/images/12345.ttl";
+    const aliceImageUrl = "http://alice.example.org/public/Chobo/images/12345.jpeg";
+    const aliceImageFileUrl = "http://alice.example.org/public/Chobo/images/12345.ttl";
     
     const imagesFolderDoc = loadFile("imagesFolder.ttl");
 
@@ -510,7 +510,7 @@ describe.only("SolidBackend getting", () => {
     const registerChanges = jest.spyOn(SolidBackend, "registerChanges");
     registerChanges.mockImplementation((doc: $rdf.NamedNode) => {});
     const getValidAppFolder = jest.spyOn(SolidBackend, "getValidAppFolder");
-    getValidAppFolder.mockImplementation((webId: String) => Utils.getBaseUrl(webId)+"public/pixolid/");
+    getValidAppFolder.mockImplementation((webId: String) => Utils.getBaseUrl(webId)+"public/Chobo/");
 
     const images = await SolidBackend.getFriendsImages(bobUserId);
 
@@ -529,9 +529,9 @@ describe.only("SolidBackend getting", () => {
     const bobProfileUrl = "http://bob.example.org/profile/card";
     const bobUserId = bobProfileUrl + "#me";
     const tomImageDoc = loadFile("tomImage.ttl");
-    const tomImageFileUrl = "http://tom.example.org/public/pixolid/images/12345.ttl";
+    const tomImageFileUrl = "http://tom.example.org/public/Chobo/images/12345.ttl";
     const bobCommentDoc = loadFile("bobComment.ttl");
-    const bobCommentUrl = "http://bob.example.org/public/pixolid/comments/56789.ttl";
+    const bobCommentUrl = "http://bob.example.org/public/Chobo/comments/56789.ttl";
 
     const expectedComments = [
       new Comment(bobCommentUrl, "Nice car dude!", tomImageFileUrl, bobUserId, new Date("2019-03-26T12:20:00.010Z"))
@@ -561,9 +561,9 @@ describe.only("SolidBackend getting", () => {
     const aliceProfileUrl = "http://alice.example.org/profile/card";
     const aliceUserId = aliceProfileUrl + "#me";
     const tomImageDoc = loadFile("tomImage.ttl");
-    const tomImageFileUrl = "http://tom.example.org/public/pixolid/images/12345.ttl";
+    const tomImageFileUrl = "http://tom.example.org/public/Chobo/images/12345.ttl";
     const aliceLikeDoc = loadFile("aliceLike.ttl");
-    const aliceLikeUrl = "http://alice.example.org/public/pixolid/likes/56789.ttl";
+    const aliceLikeUrl = "http://alice.example.org/public/Chobo/likes/56789.ttl";
 
     const expectedLikes = [
       new Like(aliceLikeUrl, tomImageFileUrl, aliceUserId, new Date("2019-03-26T12:20:00.010Z"))
@@ -610,7 +610,7 @@ describe.only("SolidBackend uploading", () => {
     const imageFile = new File([""], "image.jpeg", {type: "jpeg", lastModified: new Date(Date.now())});
     const description = "Pretty sunset.";
     const userId = "http://bob.example.org/profile/card#me";
-    const appFolder = "http://bob.example.org/public/pixolid/";
+    const appFolder = "http://bob.example.org/public/Chobo/";
     const imageName = appFolder + "images/" + Utils.getName();
     const imageFileUrl = imageName + ".ttl";
     const imageUrl = imageName + ".jpeg";
@@ -627,11 +627,11 @@ describe.only("SolidBackend uploading", () => {
 
   test("uploads a comment", async () => {
     const bobUserId = "http://bob.example.org/profile/card#me";
-    const bobAppFolder = "http://bob.example.org/public/pixolid/";
+    const bobAppFolder = "http://bob.example.org/public/Chobo/";
     const commentFileUrl = bobAppFolder + "comments/" + Utils.getName() + ".ttl";
     const content = "Stunning!";
     const tomImageDoc = loadFile("tomImage.ttl");
-    const tomImageFileUrl = "http://tom.example.org/public/pixolid/images/1234.ttl";
+    const tomImageFileUrl = "http://tom.example.org/public/Chobo/images/1234.ttl";
 
     const load = jest.spyOn(SolidBackend, "load");
     load.mockImplementation((doc: $rdf.NamedNode) => { 
@@ -656,10 +656,10 @@ describe.only("SolidBackend uploading", () => {
 
   test("uploads a like", async () => {
     const bobUserId = "http://bob.example.org/profile/card#me";
-    const bobAppFolder = "http://bob.example.org/public/pixolid/";
+    const bobAppFolder = "http://bob.example.org/public/Chobo/";
     const likeFileUrl = bobAppFolder + "likes/" + Utils.getName() + ".ttl";
     const tomImageDoc = loadFile("tomImage.ttl");
-    const tomImageFileUrl = "http://tom.example.org/public/pixolid/images/1234.ttl";
+    const tomImageFileUrl = "http://tom.example.org/public/Chobo/images/1234.ttl";
 
     const load = jest.spyOn(SolidBackend, "load");
     load.mockImplementation((doc: $rdf.NamedNode) => { 
@@ -684,7 +684,7 @@ describe.only("SolidBackend uploading", () => {
 
   test("creates app folders", async () => {
     const bobUserId = "http://bob.example.org/profile/card#me";
-    const bobAppFolder = "http://bob.example.org/public/pixolid/";
+    const bobAppFolder = "http://bob.example.org/public/Chobo/";
 
     const updateAppFolder = jest.spyOn(SolidBackend, "updateAppFolder");
     updateAppFolder.mockImplementation(async (userId, folderUrl) => { return true });
