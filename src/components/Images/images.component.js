@@ -10,7 +10,7 @@ import {
  * @param props Given props.
  */
 const Images = props => {
-  return (
+   return (
     <ImagesCard className="card">
       <ImagesDetail>
         <h4>
@@ -29,7 +29,7 @@ const Images = props => {
                     <div>
                       {props.users && (
                         <CreatorLabel>
-                          {props.users.get(image.creator).name}
+                          {props.users.get(image.creator.substring(0,image.creator.length-15)).name};
                         </CreatorLabel>
                       )}
                       <ImageContainer image={image.image} />
