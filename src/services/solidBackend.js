@@ -72,8 +72,6 @@ class SolidBackend {
    * @param {$rdf.NamedNode} document A given document to fetch and load.
    */
   async load(document: $rdf.NamedNode) {
-    console.log("load");
-    console.log(document);
     try {
       return await this.fetcher.load(document);
     } catch (err) {
@@ -432,6 +430,15 @@ class SolidBackend {
     const users = [];
     for (var i in userIds) {
       await this.getPerson(userIds[i]).then(person => {
+        console.log("geperson");
+        console.log(person);
+        //if user doesn't set a name make NoNamed as default
+        if (person.name === "")
+        {
+          person.name="NoNamed";
+        }
+        console.log("noperson");
+        console.log(person);
         users.push(person);
       }).catch(err => console.log(err));
     }
@@ -459,6 +466,8 @@ class SolidBackend {
     console.log(friendsIds);
     const images = await Promise.all( friendsIds.map(friendId => this.getImages(friendId,this.getAppFolder(friendId).value)) );
     // friendsIds.map(friendId => this.getImages(friendId,friendFolder)) 
+    console.log("loadimanges");
+    console.log(images);
     return images.flat().sort((a, b) => Utils.sortByDateAsc(a.createdAt, b.createdAt));
   }
 
