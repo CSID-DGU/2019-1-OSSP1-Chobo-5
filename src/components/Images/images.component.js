@@ -10,6 +10,8 @@ import {
  * @param props Given props.
  */
 const Images = props => {
+  console.log("images");
+  console.log(props);
    return (
     <ImagesCard className="card">
       <ImagesDetail>
@@ -29,7 +31,7 @@ const Images = props => {
                     <div>
                       {props.users && (
                         <CreatorLabel>
-                          {props.users.get(image.creator.substring(0,image.creator.length-15)).name};
+                          {props.users.get(image.creator).name};
                         </CreatorLabel>
                       )}
                       <ImageContainer image={image.image} />

@@ -383,7 +383,7 @@ class SolidBackend {
       console.log("Could not load a profile document.");
       return Promise.reject(err);
     }
-    return this.store.each(user, FOAF("knows"), null, doc).map(friend => friend.value);
+    return this.store.each(user, FOAF("knows"), null, doc).map(friend => friend.value + "profile/card#me");
   }
 
   /**
@@ -452,6 +452,7 @@ class SolidBackend {
    */
   async getFriends(webId: string): Promise<Person[]> {
     const friendsIds = await this.getFriendsWebId(webId);
+    console.log(friendsIds);
     return await this.getPersons(friendsIds);
   }
 

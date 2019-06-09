@@ -67,6 +67,8 @@ class FriendsImagesComponent extends Component<Props> {
    */
   async getImageData() {
     this.setState({ isLoading: true });
+    console.log("getImage")
+    console.log(this.props.webId);
     const images = await SolidBackend.getFriendsImages(this.props.webId);
     const friends = await SolidBackend.getFriends(this.props.webId);
     const friendsMap = new Map();
