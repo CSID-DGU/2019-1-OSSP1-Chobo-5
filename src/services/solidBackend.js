@@ -383,7 +383,10 @@ class SolidBackend {
       console.log("Could not load a profile document.");
       return Promise.reject(err);
     }
-    return this.store.each(user, FOAF("knows"), null, doc).map(friend => friend.value + "profile/card#me");
+    console.log("friends");
+    console.log(user);
+    console.log(this);
+    return this.store.each(user, FOAF("knows"), null, doc).map(friend => friend.value);
   }
 
   /**

@@ -10,7 +10,6 @@ import {
  * @param props Given props.
  */
 const Images = props => {
-  console.log("images");
   console.log(props);
    return (
     <ImagesCard className="card">
