@@ -6,7 +6,7 @@ import {
 } from "./images.style";
 
 /**
- * Images component.
+ * show image preview card
  * @param props Given props.
  */
 const Images = props => {

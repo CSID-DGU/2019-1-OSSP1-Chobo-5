@@ -5,7 +5,7 @@ import Modal from "react-responsive-modal";
  * folder model component
  * @param {Props} props Given props.
  */
-// set default folder
+// choose default folder
 export const FolderModal = (props: Props) => {
   return (
     <Modal

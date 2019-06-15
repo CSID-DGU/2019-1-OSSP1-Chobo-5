@@ -23,16 +23,16 @@ class FolderModalContainer extends Component<Props> {
     };
   }
 
-  /**
-   * Opens the image detail modal.
-   */
+  
+  // Opens the image detail modal.
+   
   onOpenModal() {
     this.setState({ open: true });
   }
  
-  /**
-   * Closes the image detail modal.
-   */
+
+  // Closes the image detail modal.
+   
   onCloseModal() {
     this.setState({ open: false, userRequested: false });
     if (this.props.onClose) this.props.onClose();
@@ -40,7 +40,7 @@ class FolderModalContainer extends Component<Props> {
 
   /**
    * Saves the current folder value to the component's state.
-   * @param {Event} event An event triggering the folder change.
+   * @param {Event} event trigger folder change.
    */
   folderChanged(event) {
     const value = event.target.value;
@@ -54,7 +54,7 @@ class FolderModalContainer extends Component<Props> {
   }
 
   /**
-   * Initiates creation of the user entered application folder.
+   * create the user entered application folder.
    */
   async folderConfirm(){
     const folder = Utils.trimSlashes(this.state.folder);

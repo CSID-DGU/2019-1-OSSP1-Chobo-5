@@ -31,6 +31,7 @@ const navigation = [
   }
 ];
 
+//navigation bar menu
 const AuthNavBar = props => {
   return (
     <NavBar

@@ -5,9 +5,7 @@ import { SolidBackend } from "@services";
 import { withToastManager } from "react-toast-notifications";
 
 /**
- * Container component for the ImageDetailModal component,
- * handles showing an image detail with its description,
- * comments, likes, as well as adding likes and comments.
+ * show image with detailed descriptions, comments, likes
  */
 class ImageDetailModalContainer extends Component<Props> {
   constructor(props) {

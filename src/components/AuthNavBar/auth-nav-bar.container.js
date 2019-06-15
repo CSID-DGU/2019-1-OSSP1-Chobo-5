@@ -8,6 +8,7 @@ const hasPhotoContext = "http://www.w3.org/2006/vcard/ns#hasPhoto";
 // img context 
 const imgContext = "http://xmlns.com/foaf/0.1/img"
 
+//add image state
 class AuthNavBarContainer extends Component {
   constructor(props) {
     super(props);
@@ -16,12 +17,12 @@ class AuthNavBarContainer extends Component {
 
   getProfileData = async () => {
     try {
-      // 유저 카드 불러오기
+      // load user card
       const user = data[this.props.webId];
       /*
-       * In the backgorund LDFlex is using JSON-LD. Because of this, we need to
-       * make an async call. This will return a JSON-LD expanded object and expose the requested value(name).
-       * for more information please go to: https://github.com/digitalbazaar/jsonld.js
+       * LDFlex is using JSON-LD so async
+       * JSON-LD expanded object returned.
+       *  https://github.com/digitalbazaar/jsonld.js
        */
       const userName = await user.name;
       let userImage = await user[imgContext];
@@ -37,18 +38,21 @@ class AuthNavBarContainer extends Component {
     }
   };
 
+  //check webid and get Profile
   componentDidMount() {
     if (this.props.webId) {
       this.getProfileData();
     }
   }
 
+  //update ProfileData
   componentDidUpdate(prevProps, prevState) {
     if (this.props.webId && this.props.webId !== prevProps.webId) {
       this.getProfileData();
     }
   }
 
+  //navigationBar
   render() {
     const { image } = this.state;
     return <AuthNavBar img={image} {...this.props}/>;

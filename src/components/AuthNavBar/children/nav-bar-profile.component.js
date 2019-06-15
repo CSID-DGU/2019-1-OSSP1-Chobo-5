@@ -32,18 +32,20 @@ class NavBarProfile extends Component {
     imageLoaded: false
   };
 
+  //profile image load
   onImageLoaded = async () => this.setState({ imageLoaded: true });
   logOut = async () => {
     try {
       await auth.logout();
       // remove local storage
       localStorage.removeItem("solid-auth-client");
-      // convert to login page
+      // change to login page
       this.props.history.push("/login");
     } catch (error) {
       // console.log(`Error: ${error}`);
     }
   };
+  //profile image and dropdown
   render() {
     const { img } = this.props;
     const { imageLoaded } = this.state;

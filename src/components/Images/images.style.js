@@ -43,14 +43,16 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-bottom: 1em;
+border: 2px solid black;
+
 `
 
 export const ImageContainer =  styled.div`
   background-image: ${({image}) => image ? `url(${image})`: '#cccccc'};
   background-size: cover;
-  border-radius: 50%;
   width: 8em;
   height: 8em;
+  margin-bottom: 1em;
   
   &:hover {
     filter:brightness(1.3);
