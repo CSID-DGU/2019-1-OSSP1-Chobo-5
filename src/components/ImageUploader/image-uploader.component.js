@@ -9,7 +9,7 @@ import {
 
 /**
  * Custom style option for the react-select input,
- * showing the user's image, name, and webId.
+ * show user's image, name, and webId.
  * @param {Props} props Given props.
  */
 const Option = (props) => {

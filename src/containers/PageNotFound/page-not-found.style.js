@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-/**
- * A styled-component for the 404 Page layout
- */
 export const PageNotFoundWrapper = styled.section`
     display: flex;
     flex-direction: row-reverse;
@@ -19,9 +16,7 @@ export const PageNotFoundWrapper = styled.section`
     }
 `;
 
-/**
- * A styled-component for the 404 Page content section
- */
+
 export const PageNotFoundContent = styled.div`
   max-width: 54%;
   margin: 100px 40px 0 50px;

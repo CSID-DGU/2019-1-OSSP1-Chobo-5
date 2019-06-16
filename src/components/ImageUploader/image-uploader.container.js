@@ -4,9 +4,7 @@ import { withWebId } from "@inrupt/solid-react-components";
 import SolidBackend from "../../services/solidBackend";
 
 /**
- * Container component for the ImageUploader component,
- * handles selecting images, setting access rights,
- * and uploading new images.
+ * handles selecting images, setting access rights, uploading new images.
  */
 class ImageUploaderContainer extends Component<Props> {
   constructor(props) {
@@ -37,24 +35,23 @@ class ImageUploaderContainer extends Component<Props> {
   }
 
   /**
-   * Saves the selected image to the component's state.
-   * @param {FileList} image A file list containing the image.
+   * selected image to component's state.
+   * @param {FileList} image is file list containing image.
    */
   selectedImage(image) {
     this.setState({ image: image });
   }
 
   /**
-   * Saves the current description value to the component's state.
-   * @param {Event} event An event triggering the description change.
+   * current description value to component's state.
+   * @param {Event} event triggere the description change.
    */
   descriptionChanged(event) {
     this.setState({ description: event.target.value });
   }
 
   /**
-   * Initiates the upload of a new image, while saving it into the
-   * component's state.
+   * While saving to component's state, initiates the upload of a new image
    */
   async uploadImage() {
     const imageUrl = await SolidBackend.uploadImage(this.state.image.fileList[0],
@@ -68,8 +65,8 @@ class ImageUploaderContainer extends Component<Props> {
   }
 
   /**
-   * Saves the current selected share options to the component's state.
-   * @param {*} selectedShareOptions Selected users to share the image with.
+   * Saves the share options to the component's state.
+   * @param {*} selectedShareOptions Selected users to share with.
    */
   selectedShareOptions(selectedShareOptions) {
     this.setState({ selectedShareOptions });
@@ -77,15 +74,15 @@ class ImageUploaderContainer extends Component<Props> {
 
   /**
    * Saves the current public toggle state to the component's state.
-   * @param {Event} event An event triggering the public change.
+   * @param {Event} event event trigger the public change.
    */
   publicChanged(event) {
     this.setState({ public: event.target.checked });
   }
 
   /**
-   * Initiates fetching the user's friends for the sharing options,
-   * saving them into the component's state.
+   * Start fetching user's friends for sharing options,
+   * and save to component's state.
    */
   async setAvailableShareOptions() {
     const friends = await SolidBackend.getFriends(this.props.webId);

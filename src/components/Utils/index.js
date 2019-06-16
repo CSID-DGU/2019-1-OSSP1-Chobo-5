@@ -1,4 +1,4 @@
-import GradientBackground from "./GradientBackground";
+import Pagebackground from "./Pagebackground";
 import CenterContainer from "./CenterContainer";
 import Panel from "./Panel";
 import Dropdown from "./Dropdown";
@@ -8,7 +8,7 @@ import Loader from "./Loader";
 import ToasterNotification from "./ToasterNotification";
 import Input from "./Input";
 export {
-  GradientBackground,
+  Pagebackground,
   CenterContainer,
   ToasterNotification,
   Panel,

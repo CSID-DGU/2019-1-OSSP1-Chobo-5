@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 
-import { GradientBackground, CenterContainer } from "@util-components";
+import { Pagebackground, CenterContainer } from "@util-components";
 import {
   RegisterWrapper,
   RegisterPanel,
@@ -83,7 +83,7 @@ class RegisterComponent extends Component<Props, State> {
     const { providers } = this.props;
 
     return (
-      <GradientBackground>
+      <Pagebackground>
         <CenterContainer>
           <RegisterWrapper>
             <h1>Hi! Welcome to Solid.</h1>
@@ -133,7 +133,7 @@ class RegisterComponent extends Component<Props, State> {
             </form>
           </RegisterWrapper>
         </CenterContainer>
-      </GradientBackground>
+      </Pagebackground>
     );
   }
 }
