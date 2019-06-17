@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { LoaderWrapper, CubeGrid, Cube } from "./loader.style";
+import { LoaderWrapper } from "./loader.style";
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 
 type Props = {
   delay: Number
@@ -7,34 +10,19 @@ type Props = {
 
 class Loader extends Component<Props> {
   state = { show: false };
-  componentDidMount() {
-    this.delayTimer = setTimeout(this.show, this.props.delay);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.delayTimer);
-  }
 
   show = () => this.setState({ show: true });
   render() {
-    const cubes = [0.2, 0.3, 0.4, 0.1, 0.2, 0.3, 0, 0.1, 0.2];
     const { show } = this.state;
     return (
-      show && (
-        <LoaderWrapper>
-          <CubeGrid>
-            {cubes.map((delay, i) => (
-              <Cube key={i} delay={delay} />
-            ))}
-          </CubeGrid>
-        </LoaderWrapper>
-      )
+      <LoaderWrapper>
+      <Spinner
+      size={SpinnerSize.large}
+      label="불러오는 중..." />
+    </LoaderWrapper>
     );
   }
 }
 
-Loader.defaultProps = {
-  delay: 300
-};
 
 export default Loader;

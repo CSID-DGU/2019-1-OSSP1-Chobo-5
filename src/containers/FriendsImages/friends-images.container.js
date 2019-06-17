@@ -80,7 +80,7 @@ class FriendsImagesComponent extends Component<Props> {
     return (
       <ImagesWrapper>
         <Images
-          headline="Friends' Images"
+          headline="친구 사진"
           images={this.state.images}
           users={this.state.users}
           appFolder={this.state.appFolder}

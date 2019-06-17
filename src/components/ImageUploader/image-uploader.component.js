@@ -3,9 +3,11 @@ import ReactFileReader from "react-file-reader";
 import Select from "react-select";
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { components } from "react-select";
+import { DefaultButton, PrimaryButton  } from'office-ui-fabric-react';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
   ImageUploaderCard, ImageUploaderDetail, ImageWrapper, ImgStyle, ButtonStyle, ShareStyle,
-  FriendImageStyle, FriendOptionWrapper, FriendNameStyle, FriendWebIdStyle
+  FriendImageStyle, FriendOptionWrapper, FriendNameStyle, FriendWebIdStyle, ToggleWrapper
 } from "./image-uploader.style";
 
 /**
@@ -38,8 +40,23 @@ export const ImageUploader = (props: Props) => {
     <ImageUploaderCard className="card">
       <ImageUploaderDetail>
         <h4>
-          Upload Image
+          사진 올리기
         </h4>
+        <ReactFileReader
+          fileTypes={[".png",".jpg",".jpeg"]}
+          base64={true}
+          multipleFiles={false}
+          handleFiles={props.onImageSelection}
+        >
+        <ImageWrapper>
+          {props.image && (
+            <ImgStyle src={props.image} alt="image" />
+          )}
+        </ImageWrapper>
+          <DefaultButton>
+            사진 고르기
+          </DefaultButton>
+        </ReactFileReader>
         <div className="input-wrap">
           <TextField
           lable="이미지 설명:"
@@ -50,13 +67,9 @@ export const ImageUploader = (props: Props) => {
             onChange={props.onDescriptionChange}
           />
         </div>
-        <ImageWrapper>
-          {props.image && (
-            <ImgStyle src={props.image} alt="image" />
-          )}
-        </ImageWrapper>
+        <ToggleWrapper>
         <label>
-          Public:
+          공개:
         </label>
         <label className="switch">
           <input
@@ -66,42 +79,28 @@ export const ImageUploader = (props: Props) => {
           />
           <span className="slider round"></span>
         </label>  
+          </ToggleWrapper>
         {props.public === false && (
           <ShareStyle>
             <label>
-            Share with:
+            공개할 사람:
             </label>
             <Select
               value={props.shareValue}
               onChange={props.onSelectedShareOptions}
               options={props.shareOptions}
               isMulti
-              placeholder="Select friends to share..."
+              placeholder="사진을 공개할 친구를 고르세요..."
               components={{ Option }}
             />
           </ShareStyle>
         )}
-        <ReactFileReader
-          fileTypes={[".png",".jpg",".jpeg"]}
-          base64={true}
-          multipleFiles={false}
-          handleFiles={props.onImageSelection}
-        >
-          <ButtonStyle
-            type="button"
-            className="ids-link-filled ids-link-filled--secondary"
-          >
-            Select Image
-          </ButtonStyle>
-        </ReactFileReader>
-        <ButtonStyle
-          type="button"
-          className="ids-link-filled ids-link-filled--primary"
+        <PrimaryButton 
           disabled={!props.image}
           onClick={props.onUploadClick}
         >
-          Upload Image
-        </ButtonStyle>
+          이미지 올리기
+        </PrimaryButton >
       </ImageUploaderDetail>
     </ImageUploaderCard>
   );

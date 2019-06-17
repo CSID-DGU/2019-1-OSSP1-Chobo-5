@@ -4,8 +4,7 @@ import { media } from '../../utils';
 export const WelcomeWrapper = styled.section`
   width: 100%;
   height: 100%;
-  background-image: url('/img/concentric-hex-pattern_2x.png');
-  background-repeat: repeat;
+  background-color: #E6F1F7;
   padding: 10px 0;
 
   h3 {

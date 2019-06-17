@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { initializeIcons } from '@uifabric/icons';
 
 import theme from "./utils/theme";
 import "normalize.css";
@@ -15,6 +16,7 @@ import "@inrupt/solid-style-guide";
 import "flexboxgrid";
 
 library.add(fas, far);
+initializeIcons();
 class App extends Component {
   render() {
     return (

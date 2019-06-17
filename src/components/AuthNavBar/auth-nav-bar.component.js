@@ -7,26 +7,26 @@ import { NavBarProfile } from "./children";
 const navigation = [
   {
     id: "friends-images",
-    icon: "/img/people.svg",
-    label: "Friends' Images",
+    iconName:"PhotoCollection",
+    label: "친구 사진",
     to: "/friends/images"
   },
   {
     id: "user-images",
-    icon: "/img/icon/things.svg",
-    label: "My Images",
+    iconName:"FabricPictureLibrary",
+    label: "내 사진",
     to: "/user/images"
   },
   {
     id: "upload-image",
-    icon: "/img/icon/files.svg",
-    label: "Upload Image",
+    iconName:"CloudUpload",
+    label: "사진 올리기",
     to: "/user/upload"
   },
   {
     id: "profile",
-    icon: "/img/icon/apps.svg",
-    label: "Profile",
+    iconName:"ContactCard",
+    label: "프로필",
     to: "/user/profile"
   }
 ];
@@ -39,7 +39,7 @@ const AuthNavBar = props => {
       toolbar={[
         {
           component: () => <NavBarProfile {...props} />,
-          label: "Profile",
+          label: "프로필",
           id: "profile"
         }
       ]}

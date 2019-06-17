@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { LiWrapper } from "./navigation.style";
 
 type Props = {
   navigation: Object
@@ -7,21 +9,21 @@ type Props = {
 
 const Navigation = ({ navigation }: Props) => {
   return (
+    <LiWrapper>
     <nav role="navigation" className="nav nav__primary">
       <ul>
         {navigation &&
           navigation.map(item => (
             <li key={item.id}>
               <NavLink to={item.to} activeClassName="active">
-                <span className="icon">
-                  <img src={item.icon} alt={item.id} className="nav-icon" />
-                </span>
+                <Icon iconName = {item.iconName}/>
                 <span className="label">{item.label}</span>
               </NavLink>
             </li>
           ))}
       </ul>
     </nav>
+    </LiWrapper>
   );
 };
 

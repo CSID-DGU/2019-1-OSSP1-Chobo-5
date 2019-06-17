@@ -64,7 +64,7 @@ class UserImagesComponent extends Component<Props> {
     return (
       <ImagesWrapper>
         <Images
-          headline="My Images"
+          headline="내 사진"
           images={this.state.images}
           users={this.state.users}
           appFolder={this.state.appFolder}

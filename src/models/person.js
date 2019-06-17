@@ -2,7 +2,7 @@
  * Model class for storing person's information.
  */
 export default class Person {
-  /** A WebID of the person. */
+  /** WebID of the person. */
   webId: string;
   /** Person's name. */
   name: string;

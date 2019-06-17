@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const ImagesWrapper = styled.section`
   width: 100%;
   height: 100%;
-  background-image: url('/img/concentric-hex-pattern_2x.png');
-  background-repeat: repeat;
+  background-color: #E6F1F7;
   padding: 10px 0;
 
   h3 {
@@ -19,15 +18,21 @@ export const ImagesWrapper = styled.section`
 `;
 
 export const ImagesCard = styled.div`
-  background-color: #fff;
   margin: 30px auto;
 
   //Overriding the style guide card flexbox settings
   max-width: 80% !important;
   flex-direction: row !important;
-  padding: 10px 0 !important; //temporary fix to a style guide bug
+  flex-wrap: nowrap;
+  justify-content:flex-start;
+  padding: 10px 0 !important; //a style guide bug temporary fix
+  background-color: white;
 
   align-items: center;
+
+  h4{
+    color: black;
+  }
 
   a {
     text-decoration: none;
@@ -36,6 +41,10 @@ export const ImagesCard = styled.div`
     }
   }
 
+  .row{
+  flex-direction: row;
+    width: 100%;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -43,19 +52,30 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-bottom: 1em;
-border: 2px solid black;
+min-width: 200px;
+div{
+  width:100%;
+}
+.borde{
+  
+border-width:1px;
+border-color : grey;
+border-style:solid;
+}
 
 `
 
 export const ImageContainer =  styled.div`
   background-image: ${({image}) => image ? `url(${image})`: '#cccccc'};
   background-size: cover;
-  width: 8em;
-  height: 8em;
+  background-position: center center;
+  width: 100px;
+  height: 10em;
   margin-bottom: 1em;
   
+  
   &:hover {
-    filter:brightness(1.3);
+    filter:brightness(1.2);
     transition:.1s;
   }
 
@@ -64,6 +84,7 @@ export const ImageContainer =  styled.div`
 export const ImagesDetail = styled.div`
   padding: 1rem 3.5rem;
   width: 100%;
+  max-width: 900px;
 
   p,
   li {
@@ -76,12 +97,14 @@ export const ImagesDetail = styled.div`
 `;
 
 export const GridItem = styled.div`
+  min-width: 250px;
   cursor: pointer;
 `;
 
 export const CreatorLabel = styled.p`
   opacity:0.7;
   text-align: center;
+  margin: 0 auto;
 
   white-space: nowrap;
   overflow: hidden;

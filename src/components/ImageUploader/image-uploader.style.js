@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const ImageUploaderWrapper = styled.section`
   width: 100%;
   height: 100%;
-  background-image: url('/img/concentric-hex-pattern_2x.png');
-  background-repeat: repeat;
+  background-color: #E6F1F7;
   padding: 10px 0;
 
   h3 {
@@ -49,20 +48,28 @@ export const ImageUploaderDetail = styled.div`
     list-style: disc;
     margin: 0 18px;
   }
+
+  .input-wrap{
+    div{
+      width:100%;
+    }
+  }
 `;
 
 export const ImageWrapper = styled.div`
   text-align: center;
+
 `;
 
 export const ImgStyle = styled.img`
-  border-radius: 50%;
-  width: 128px;
-  height: 128px;
+    width: auto;
+    height: auto;
+  max-width: 500px;
+  max-height: 500px;
 `;
 
-export const ButtonStyle = styled.button`
-  margin-top: 10px;
+export const ToggleWrapper= styled.div`
+width: 80%;
 `;
 
 export const ShareStyle = styled.div`

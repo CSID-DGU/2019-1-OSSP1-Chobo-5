@@ -27,7 +27,7 @@ const Images = props => {
               >
                 <ImageWrapper>
                   {image && (
-                    <div>
+                    <div class ="borde">
                       {props.users && (
                         <CreatorLabel>
                           {props.users.get(image.creator).name};
@@ -41,7 +41,7 @@ const Images = props => {
           ))}
         </section>
         {(!props.images || props.images.length === 0) && (
-          <NoImagesLabelStyle>No Images...</NoImagesLabelStyle>
+          <NoImagesLabelStyle>이미지가 없습니다...</NoImagesLabelStyle>
         )}
       </ImagesDetail>
     </ImagesCard>

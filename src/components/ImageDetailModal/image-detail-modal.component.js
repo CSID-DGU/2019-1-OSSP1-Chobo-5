@@ -3,10 +3,12 @@ import Modal from "react-responsive-modal";
 import {
   ImageStyle, UserImageStyle, ImageInfoWrapper, DateStyle, DescriptionStyle,
   UserNameStyle, LikeCountStyle, LikeWrapper, LikeButtonStyle, ImageDetailWrapper,
-  CommentsWrapper, CommentStyle, CommentAreaWrapper, CommentTextareaStyle,
+  CommentsWrapper, CommentStyle, CommentAreaWrapper, 
   CommentUserImageStyle, CommentUserNameStyle, CommentTextStyle, CommentDateStyle
 } from "./image-detail-modal.style";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { PrimaryButton } from 'office-ui-fabric-react';
 import { css } from "glamor";
 
 /**
@@ -14,7 +16,7 @@ import { css } from "glamor";
  * @param {Props} props Given props.
  */
 export const ImageDetailModal = (props: Props) => {
-  const thumbIcon = props.isLikedByUser ? ["fas", "thumbs-up"] : ["far", "thumbs-up"];
+  const thumbIcon = props.isLikedByUser ?"LikeSolid" : "Like";
   const dateOption = { year: "2-digit", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" };
   const customOverlay = css({
     background: "rgba(128, 128, 128, 0.5)"
@@ -38,16 +40,16 @@ export const ImageDetailModal = (props: Props) => {
     >
       {props.image && (
         <ImageDetailWrapper>
-          <ImageStyle src={props.image.image} alt="" />
           <ImageInfoWrapper>
             <UserImageStyle src={props.creator.image} />
             <UserNameStyle>
               {props.creator.name}
             </UserNameStyle>
             <DateStyle>
-              {props.image.createdAt.toLocaleString("en-GB", dateOption)}
+              {props.image.createdAt.toLocaleString(navigator.language, dateOption)}
             </DateStyle>
           </ImageInfoWrapper>
+          <ImageStyle src={props.image.image} alt="" />
           <ImageInfoWrapper>
             <DescriptionStyle>
               {props.image.description}
@@ -57,7 +59,7 @@ export const ImageDetailModal = (props: Props) => {
                 {props.likeCount}
               </LikeCountStyle>
               <LikeButtonStyle onClick={props.onLike}>
-                <FontAwesomeIcon icon={thumbIcon} />
+                <Icon iconName={thumbIcon} />
               </LikeButtonStyle>
             </LikeWrapper>
           </ImageInfoWrapper>
@@ -74,7 +76,7 @@ export const ImageDetailModal = (props: Props) => {
                         {creator.name}
                       </CommentUserNameStyle>
                       <CommentDateStyle>
-                        {comment.createdAt.toLocaleString("en-GB", dateOption)}
+                        {comment.createdAt.toLocaleString(navigator.language, dateOption)}
                       </CommentDateStyle>
                     </ImageInfoWrapper>
                     <ImageInfoWrapper>
@@ -86,19 +88,14 @@ export const ImageDetailModal = (props: Props) => {
             )})}
           </CommentsWrapper>
           <CommentAreaWrapper>
-            <CommentTextareaStyle
-              type="text"
-              placeholder="Type a comment..."
+          <TextField label="여기에 입력하세요." multiline rows={1}
               value={props.comment}
-              onChange={props.onCommentChange}
-            />
-            <button
-              className="ids-link-filled ids-link-filled--primary"
+              onChange={props.onCommentChange} />
+              <PrimaryButton
               onClick={props.onAddComment}
-              disabled={!props.comment}
-            >
-              Add
-            </button>
+              disabled={!props.comment}>
+              댓글달기
+              </PrimaryButton>
           </CommentAreaWrapper>
         </ImageDetailWrapper>
       )}

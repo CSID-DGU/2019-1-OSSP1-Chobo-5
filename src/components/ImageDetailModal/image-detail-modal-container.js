@@ -24,13 +24,7 @@ class ImageDetailModalContainer extends Component<Props> {
       isLikedByUser: false
     };
   }
-
-  componentDidMount() {
-    if (this.props.webId && this.props.image) {
-      this.getLikes();
-    }
-  }
-
+  
   componentDidUpdate(prevProps, prevState) {
     if ((this.props.webId && this.props.webId !== prevProps.webId) || (this.props.image && this.props.image !== prevProps.image)) {
       this.getLikes();
@@ -38,9 +32,15 @@ class ImageDetailModalContainer extends Component<Props> {
     }
   }
 
+  componentDidMount() {
+    if (this.props.webId && this.props.image) {
+      this.getLikes();
+    }
+  }
+
+
   /**
-   * Initiates fetching likes for the given image,
-   * saving them into the component's state.
+   * Get like and save to component's state
    */
   async getLikes() {
     const likes = await SolidBackend.getLikes(this.props.image.url);
@@ -49,9 +49,8 @@ class ImageDetailModalContainer extends Component<Props> {
   }
 
   /**
-   * Checks whether the currently signed in user has
-   * liked the given image.
-   * @param {Like[]} likes An array of likes related to the image.
+   * Check user cliked like
+   * @param {Like[]} likes array of likes of the image.
    */
   isLikedByUser(likes: Like[]) : boolean {
     const myLike = likes.filter(like => { return like.creator === this.props.webId } );
@@ -59,7 +58,7 @@ class ImageDetailModalContainer extends Component<Props> {
   }
 
   /**
-   * Initiates the upload of a new like, while saving it
+   * Add a new like, while saving it
    * into the component's state.
    */
   async uploadLike() {
@@ -73,7 +72,7 @@ class ImageDetailModalContainer extends Component<Props> {
   }
 
   /**
-   * Initiates fetching comments for the given image,
+   * Fetch comments for the given image,
    * saving them into the component's state.
    */
   async getComments() {
@@ -86,7 +85,7 @@ class ImageDetailModalContainer extends Component<Props> {
   }
 
   /**
-   * Initiates the upload of a new comment, while saving
+   *Upload a new comment, while saving
    * it into the component's state.
    */
   async uploadComment() {

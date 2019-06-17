@@ -17,7 +17,7 @@ export const ImageStyle = styled.img`
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 10px;
   margin-bottom: 10px;
   display: block;
 `;
@@ -27,6 +27,8 @@ export const ImageInfoWrapper = styled.div`
   justify-content: left;
   align-items: center;
   flex-direction: row !important;
+  margin-top:10px;
+  max-height: 50ex;
   max-width: 50vw;
 `;
 
@@ -37,8 +39,8 @@ export const UserNameStyle = styled.label`
 
 export const DescriptionStyle = styled.label`
   display: block;
-  max-height: 3em;
   overflow-y: auto;
+  max-height:15ex;
   margin-top: 10px;
 `;
 
@@ -62,7 +64,7 @@ export const LikeButtonStyle = styled.div`
   }
 `;
 
-export const LikeWrapper = styled.div`;
+export const LikeWrapper = styled.div`
   margin-left: auto;
   margin-right: 0;
   display: flex;
@@ -102,19 +104,14 @@ export const CommentAreaWrapper = styled.div`
   align-items: center;
   flex-direction: row !important;
 
-  button {
-    margin-left: 5px;
-    width: 15%;
-    height: 3em;
-    margin-bottom: 0;
+  div{
+    width:85%;
+    div{
+      width: 100%;
+    }
   }
 `;
 
-export const CommentTextareaStyle = styled.textarea`
-  resize: none;
-  width: 85%;
-  height: 2em;
-`;
 
 export const CommentUserNameStyle = styled.label`
   display: block;

@@ -52,7 +52,7 @@ class NavBarProfile extends Component {
 
     const profileOpts = [
       {
-        label: "Log Out",
+        label: "로그아웃",
         onClick: this.logOut
       }
     ];
@@ -64,7 +64,7 @@ class NavBarProfile extends Component {
           <Img
             show={imageLoaded}
             src={img}
-            alt="profile"
+            alt="프로필"
             onLoad={this.onImageLoaded}/>
         </Link>
       </ImageContainer>
