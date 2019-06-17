@@ -75,26 +75,6 @@ export const Actions = styled.div`
   flex-direction: row-reverse;
   justify-content: space-between;
 
-  button {
-    height: 32px;
-    width: 150px;
-    border-radius: 4px;
-    font-family: Segoe UI;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.89px;
-    line-height: 11px;
-    text-align: center;
-    text-transform: uppercase;
-    border: solid 2px #449df5;
-    box-sizing: border-box;
-  }
-
-  .btn-solid {
-    background-color: #449df5;
-    color: #ffffff;
-  }
-
   .btn-outlined {
     background-color: #ffffff;
     color: #449df5;

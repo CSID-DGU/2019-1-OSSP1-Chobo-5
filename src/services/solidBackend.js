@@ -189,6 +189,7 @@ class SolidBackend {
     const imagesUrl = folderUrl + "images/";
     const commentsUrl = folderUrl + "comments/";
     const likesUrl = folderUrl + "likes/";
+    console.log("createFolder");
     try {
       await fileClient.createFolder(folderUrl).then(success => {
         console.log(`Created folder ${folderUrl}.`);

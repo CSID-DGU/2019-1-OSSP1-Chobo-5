@@ -1,6 +1,7 @@
 import React from "react";
 import ReactFileReader from "react-file-reader";
 import Select from "react-select";
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { components } from "react-select";
 import {
   ImageUploaderCard, ImageUploaderDetail, ImageWrapper, ImgStyle, ButtonStyle, ShareStyle,
@@ -40,13 +41,11 @@ export const ImageUploader = (props: Props) => {
           Upload Image
         </h4>
         <div className="input-wrap">
-          <label>
-            Image description:
-          </label>
-          <textarea
-            rows="3"
+          <TextField
+          lable="이미지 설명:"
+            multiline rows={3}
             type="text"
-            placeholder="Image description..."
+            placeholder="여기에 입력하세요..."
             value={props.description}
             onChange={props.onDescriptionChange}
           />

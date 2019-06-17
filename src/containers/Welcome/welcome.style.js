@@ -91,6 +91,10 @@ export const WelcomeProfile = styled.div`
     vertical-align: middle;
   }
 
+  .ProfileLogout {
+    border-radius:0px
+  }
+
   ${media.tablet`
     width: 50%;
     &:after {

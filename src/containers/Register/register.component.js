@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import  {DefaultButton, PrimaryButton} from 'office-ui-fabric-react';
 
 import { Pagebackground, CenterContainer } from "@util-components";
 import {
@@ -86,7 +87,7 @@ class RegisterComponent extends Component<Props, State> {
       <Pagebackground>
         <CenterContainer>
           <RegisterWrapper>
-            <h1>Hi! Welcome to Solid.</h1>
+            <h1>환영합니다!</h1>
             <form onSubmit={this.onSubmit}>
               <RegisterPanel>
                 <PanelHeader className="panel-header">
@@ -103,7 +104,7 @@ class RegisterComponent extends Component<Props, State> {
                       공급자가 무엇인가요?
                     </a>
                     <Link to="/login" className="a-with-spacing">
-                      I already have a Solid identity
+                      솔리드 계정이 이미 있습니다.
                     </Link>
                     <ul>
                       {providers.map((providerData, i) => (
@@ -120,14 +121,23 @@ class RegisterComponent extends Component<Props, State> {
                   </Fragment>
                 </PanelBody>
                 <Actions className="actions">
-                  <button
+                  <PrimaryButton
                     className="btn-solid"
                     onClick={this.next}
                     type="submit"
                     disabled={!canContinue}
                   >
                     다음
-                  </button>
+                  </PrimaryButton>
+                  
+              <Link to="/login"> 
+                  <DefaultButton
+                    className= "btn-back"
+                    onClick="/login"
+                  >
+                    이전
+                  </DefaultButton>
+                  </Link>
                 </Actions>
               </RegisterPanel>
             </form>

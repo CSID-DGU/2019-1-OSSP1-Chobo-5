@@ -37,14 +37,13 @@ export default class LoginComponent extends Component<Props, State> {
                 callbackUri={`${window.location.origin}/friends/images`}
               />
             </PanelBody>
-              <Link
-              to="/register"
-            > <DefaultButton
-            data-automation-id="test"
-            allowDisabledFocus={true}
-            text="가입하기"
-            onClick="/register"
-          ></DefaultButton></Link>
+              <Link to="/register"> 
+              <DefaultButton
+               data-automation-id="test"
+               allowDisabledFocus={true}
+               text="가입하기"
+               onClick="/register"></DefaultButton>
+               </Link>
              
               <a
                 href="https://solid.inrupt.com/get-a-solid-pod"

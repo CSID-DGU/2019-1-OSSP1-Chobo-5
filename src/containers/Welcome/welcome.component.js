@@ -1,6 +1,7 @@
 import React from "react";
 import { LogoutButton } from "@inrupt/solid-react-components";
 import isLoading from "@hocs/isLoading";
+import {DefaultButton} from 'office-ui-fabric-react';
 import {
   WelcomeWrapper,
   WelcomeCard,
@@ -25,15 +26,15 @@ const WelcomePageContent = props => {
           <img src="/img/Chobo.svg" alt="Chobo" />
           {props.appFolder && (
             <AppFolderStyle>
-              <AppFolderLabel>Application Folder: </AppFolderLabel>
+              <AppFolderLabel>앱 폴더: </AppFolderLabel>
               <AppFolderLabel>{props.appFolder}</AppFolderLabel>
-              <button onClick={props.onChangeAppFolderClick}>Change Folder</button>
+              <DefaultButton onClick={props.onChangeAppFolderClick}>폴더 바꾸기</DefaultButton>
             </AppFolderStyle>
           )}
         </WelcomeLogo>
         <WelcomeProfile>
           <h3>
-            Welcome, <span>{props.name}</span>
+            <span>{props.name}</span>
           </h3>
           <ImageWrapper>
             {props.image && (
@@ -43,7 +44,7 @@ const WelcomePageContent = props => {
             )}
           </ImageWrapper>
           <p>
-            All Done ? <LogoutButton />
+             <LogoutButton class = "ProfileLogout" />
           </p>
         </WelcomeProfile>
       </WelcomeCard>
@@ -53,7 +54,7 @@ const WelcomePageContent = props => {
             Welcome to Chobo!
           </h3>
           <p>
-            Here you can publish your photos and view what your friends posted.
+            SSolid를 이용한 SNS입니다.
           </p>
         </WelcomeDetail>
       </WelcomeCard>

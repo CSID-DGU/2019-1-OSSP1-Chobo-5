@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const PageNotFoundWrapper = styled.section`
     display: flex;
     flex-direction: row-reverse;
-    background-image: url('/img/spaceman.svg');
+    background-image: url('/img/notFound.svg');
     background-repeat: no-repeat;
-    background-position-x: -125px;
-    background-position-y: 100px;
+    background-position-x: 0px;
+    background-position-y: 0px;
     height: 100%;
     
     @media only screen and (max-width: 900px) {

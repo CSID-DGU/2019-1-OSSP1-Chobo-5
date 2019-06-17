@@ -17,18 +17,18 @@ export const FolderModal = (props: Props) => {
       center
     >
       <h3>
-        Choose an application folder
+        앱 폴더를 설정하세요.
       </h3>
       <label>
         {props.baseUrl}
       </label>
       <div className="input-wrap">
         <label>
-          Folder name: (e.g. Chobo)
+          폴더 이름
         </label>
         <input
           type="text"
-          placeholder="Application folder..."
+          placeholder="예: Chobo"
           value={props.folder}
           onChange={props.onFolderChange}
           invalid={props.invalid}
