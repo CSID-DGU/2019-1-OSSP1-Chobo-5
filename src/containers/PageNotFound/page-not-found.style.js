@@ -3,15 +3,13 @@ import styled from 'styled-components';
 export const PageNotFoundWrapper = styled.section`
     display: flex;
     flex-direction: row-reverse;
-    background-image: url('/img/notFound.svg');
+    background-image: url('/img/notFound1.svg');
     background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 0px;
     height: 100%;
+
     
     @media only screen and (max-width: 900px) {
-      background-image: url('/img/spaceman-mobile.svg');
-      background-position: left -80px bottom -10px;
+      background-image: url('/img/notFound.svg');
       background-size: 70%;
     }
 `;
@@ -21,6 +19,7 @@ export const PageNotFoundContent = styled.div`
   max-width: 54%;
   margin: 100px 40px 0 50px;
   
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
   @media only screen and (max-width: 900px) {
     max-width: 100%;

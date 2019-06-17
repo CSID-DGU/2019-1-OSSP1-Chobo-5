@@ -1,6 +1,7 @@
 /* eslint-disable constructor-super */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {DefaultButton} from "office-ui-fabric-react";
 import {
   PageNotFoundWrapper,
   PageNotFoundContent
@@ -19,11 +20,11 @@ class PageNotFound extends Component<Props> {
           <p>
             요청한 페이지를 찾을 수 없습니다.
           </p>
-          <div>
-            <Link to="/" className="ids-link">
+            <Link to="/">
+              <DefaultButton>
               홈페이지로 가기
+                </DefaultButton>
             </Link>
-          </div>
         </PageNotFoundContent>
       </PageNotFoundWrapper>
     );
