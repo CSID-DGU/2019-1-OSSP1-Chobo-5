@@ -1,66 +1,71 @@
 # Chobo
 
-Chobo is a Web application built to support the Solid.
-Its purpose is to manage, upload, comment, and like images via the Solid POD storage.
+Chobo는 Solid를 지원하기 위해 만들어진 웹 프로그램입니다.
+Solid Pod 저장소를 통해 이미지를 관리 및 업로드하고 메세지를 적을 수 있으며, 좋아요를 할 수 있습니다.
 
-This project was bootstrapped with [Solid React Application Generator](https://github.com/inrupt/generator-solid-react).
+이 애플리케이션은 [Solid React Application Generator](https://github.com/inrupt/generator-solid-react)를 통해 생성되었습니다.
 
-## Functionality
-User can sign with his Inrupt or Solid Community WebID.
 
-The application supports uploading images with descriptions to the user's Solid POD.
+## 기능
+사용자는 Inrupt 또는 Solid Community 웹 ID를 이용하여 로그인할 수 있습니다.
+
+이 애플리케이션은 메세지를 포함한 이미지를 사용자의 Solid Pod에 업로드할 수 있습니다. 
 The user can also set access rights for newly uploaded images to either be public or private.
-In the private mode, it is possible to select multiple users (user's friends from the user's profile), which will be allowed to access and view the image via the application.
+또한 사용자는 업로드를 할 때, 액세스 권한을 공개 혹은 비공개로 설정할 수 있습니다.
+비공개로 설정하면, 애플리케이션을 통해 이미지에 접근할 수 있는 (친구로 등록되어 있는) 사용자들을 선택할 수 있습니다.
 
-The application supports viewing user's images.
-The user can also view images posted by his friends (gathered from the friend's profile) via the application.
+이 애플리케이션은 사용자의 이미지를 보는 기능을 제공합니다.
+사용자는 애플리케이션을 통해 친구가 공개한 이미지를 볼 수 있습니다.
 
-The application also supports showing the image detail.
-The detail shows the image with its description, author, and date of posting.
+이 애플리케이션은 이미지에 메세지를 같이 작성할 수 있으며, 댓글을 작성할 수 있습니다.
+또한 작성된 이미지에 좋아요를 표시할 수 있습니다.
+메세지와 댓글, 좋아요는 세부 정보에 표시됩니다.
 
-The application enables users to post comments to the images, as well as like images.
-The individual comments and likes are shown in the image detail.
+이 애플리케이션은 게시된 이미지의 세부 정보를 보는 기능도 지원합니다.
+세부 정보로는 같이 작성된 메세지, 작성자, 댓글, 좋아요 숫자 및 작성 날짜가 표시된 이미지가 있습니다.
 
-Every image, comment, and like is stored in the Solid POD of the user who posted it.
-The application gathers all the content from the PODs of individual users.
 
-## Installing
+모든 데이터는 이미지를 게시한 사용자의 Solid Pod에 저장됩니다.
+애플리케이션에서는 사용자의 Pod에서 모든 컨텐츠를 가져옵니다.
 
-You can install the application by executing:
+
+## 설치
+
+다음 명령어를 통해서 설치가 가능합니다.
 
 npm install
-or
+
+또는
+
 yarn install
 
-## Running
 
-You can run the application by executing:
+## 실행
+
+다음 명령을 통해 실행이 가능합니다.
 
 npm start
-or
+
+또는
+
 yarn start
 
-The application is then available at [http://localhost:3000](http://localhost:3000) which you can view in the browser.
+애플리케이션은 당신의 브라우저에서 [http://localhost:3000](http://localhost:3000)를 통해 사용 가능합니다.
 
-## Testing
 
-You can start the testing environment by executing:
+## 빌드
 
-npm test
-or
-yarn test
-
-## Building
-
-You can build the application for deployment by executing:
+다음 명령을 통해 배포용 애플리케이션을 빌드할 수 있습니다.
 
 npm run build
-or
+
+또는
+
 yarn build
 
-You can find the built application in the `build` folder.
+빌드된 애플리케이션은 'build' 폴더에서 찾아볼 수 있습니다.
 
-You can run a static server, for example `serve`, and pass the build folder to it.
+또한 정적 서버(ex. 'serve')를 실행하고 빌드 폴더를 전달할 수 있습니다.
 
 serve -s ./build/ -l 3000
-The application is then available at [http://localhost:3000](http://localhost:3000) which you can view in the browser.
+애플리케이션은 당신의 브라우저에서 [http://localhost:3000](http://localhost:3000)를 통해 사용 가능합니다.
