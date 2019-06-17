@@ -3,7 +3,7 @@ import { Panel } from "@util-components";
 
 export const RegisterWrapper = styled.section`
   h1 {
-    color: #ffffff;
+    color: black;
   }
 `;
 

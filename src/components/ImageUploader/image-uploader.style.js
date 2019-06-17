@@ -40,6 +40,10 @@ export const ImageUploaderDetail = styled.div`
   padding: 1rem 3.5rem;
   width: 100%;
 
+  h4{
+    color: black;
+  }
+
   p,
   li {
     color: #666666;
@@ -52,6 +56,7 @@ export const ImageUploaderDetail = styled.div`
   .input-wrap{
     div{
       width:100%;
+      max-width: 1000px;
     }
   }
 `;
